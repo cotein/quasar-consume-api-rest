@@ -1,0 +1,1 @@
+export const IsSideMenuOpen = (state) => state.isSideMenuOpen;
