@@ -1,18 +1,15 @@
+import authRouter from './routes/auth';
+
 const routes = [
     {
         path: '/',
         component: () => import('./../layouts/LandingPage.vue')
     },
     {
-        path: '/login',
-        name: 'Login',
-        component: () => import('./../pages/LoginPage.vue')
+        path: '/auth',
+        ...authRouter
     },
-    {
-        path: '/registro',
-        name: 'Register',
-        component: () => import('./../pages/RegisterPage.vue')
-    },
+    
     {
         path: '/system',
         component: () => import('./../layouts/MainLayout.vue'),

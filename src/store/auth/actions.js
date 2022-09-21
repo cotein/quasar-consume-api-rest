@@ -10,9 +10,7 @@ export const login = async(_, {email, password}) => {
 
         return response;
     } catch (error) {
-        console.error('error')
-        console.error(error)
-        console.error('error')
+    console.log("🚀 ~ file: actions.js ~ line 13 ~ login ~ error", error)
     }
 }
 

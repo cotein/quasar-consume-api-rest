@@ -29,10 +29,12 @@ export default route(function ({ store, ssrContext } ) {
     Router.beforeEach( (to, from, next) => {
 
         const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+        console.log("🚀 ~ file: index.js ~ line 32 ~ Router.beforeEach ~ requiresAuth", requiresAuth)
 
         //const user = store.getters['auth/AuthUser'];
         const user = SessionStorage.getItem('user');
-        if (to.name !== 'Login' && !user) next({ name: 'Login' })
+        console.log("🚀 ~ file: index.js ~ line 35 ~ Router.beforeEach ~ user", user)
+        if (to.name !== 'Login' && !user && requiresAuth) next({ name: 'Login' })
         else next();
     })
 
