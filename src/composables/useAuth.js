@@ -7,9 +7,11 @@ export const useAuth = () => {
     const createUser = async (user) => {
 
         const newUser = await store.dispatch('auth/registerUser', user);
+        console.log("🚀 ~ file: useAuth.js ~ line 10 ~ createUser ~ newUser", newUser)
 
         return newUser;
     }
+    
     return {
         createUser
     }

@@ -97,6 +97,7 @@
                     </div>
                 </div>
                 <div class="signup-footer">
+                    <q-btn color="primary" icon="check" label="OK" @click="onClick" />
                     ¿Ya tiene una cuenta? <router-link :to="{name: 'login'}" >LOG IN</router-link>
                 </div>
             </div>
@@ -129,6 +130,19 @@ export default defineComponent({
             onSubmit: async () => {
                 console.log("🚀 ~ file: RegisterPage.vue ~ line 134 ~ onSubmit: ~ userForm", userForm.value)
                 createUser(userForm.value);
+            },
+
+            onClick: async () => {
+
+                const APP_ID = '8134297603737971';
+
+                const CLIENT_SECRET = 'UOkOi9LKA4eGjguSqB074SLjthDRSF2g';
+
+                const REDIRECT_URI = 'https://localhost:9000/meli/token';
+
+                const URL = `https://auth.mercadolibre.com.ar/authorization?response_type=code&client_id=${APP_ID}&redirect_uri=${REDIRECT_URI}`;
+                
+                window.location.href = URL;
             }
         }
     }

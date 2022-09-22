@@ -9,6 +9,12 @@ const routes = [
         path: '/auth',
         ...authRouter
     },
+    {
+        path: '/meli/token',
+        name: 'Melitoken',
+        component: () => import('./../pages/MeliToken.vue'),
+        params: true
+    },
     
     {
         path: '/system',
