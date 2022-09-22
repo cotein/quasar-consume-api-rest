@@ -2,21 +2,20 @@
     <q-page class="bg-grey-3 window-height window-width row justify-center items-center">
             <div class="login">
                 <div class="login-body">
-                    <a class="login-brand" href="index.html">
+                    <a class="login-brand" href="#">
                         <img class="img-responsive" src="img/logo.svg" alt="Elephant">
                     </a>
                     <h3 class="login-heading">Login</h3>
                     <div class="login-form">
-                        <form data-toggle="md-validator">
+                        <form @submit.prevent="">
                             <div class="md-form-group md-label-floating">
                                 <input
                                     v-model="email"
                                     class="md-form-control" 
                                     type="email" 
                                     name="email" 
-                                    spellcheck="false" 
                                     autocomplete="off" 
-                                    data-msg-required="Ingresar dirección de correo electrónico." required>
+                                    >
                                 <label class="md-control-label">Email</label>
                             </div>
                             <div class="md-form-group md-label-floating">
@@ -25,8 +24,7 @@
                                     class="md-form-control" 
                                     type="password" 
                                     name="password" 
-                                    minlength="6" 
-                                    data-msg-minlength="La contraseña debe contener al menos 6 carateres" data-msg-required="Ingresar contraseña" required>
+                                    >
                                 <label class="md-control-label">Password</label>
                             </div>
                             <div class="md-form-group md-custom-controls">
@@ -36,9 +34,9 @@
                                     <span class="custom-control-label">Keep me signed in</span>
                                 </label>
                                 <span aria-hidden="true"> · </span> -->
-                                <a href="password-3.html">Forgot password?</a>
+                                <a href="#">¿Olvidó su contraseña?</a>
                             </div>
-                            <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+                            <button class="btn btn-primary btn-block" type="submit">Ingresar</button>
                         </form>
                     </div>
                 </div>
@@ -84,12 +82,6 @@ export default defineComponent({
                 router.push({name: 'DashBoard'})
             }
         }
-
-        const scripts = [
-            'elephant.min.js',
-            'landing-page.min.js',
-            'vendor.min.js'
-        ];
 
         onBeforeMount(() => {
             const body = document.getElementsByTagName('body')[0];

@@ -1,9 +1,16 @@
 import { useStore } from "vuex";
 
-const useAuth = () => {
+export const useAuth = () => {
 
     const store = useStore();
-    return {
 
+    const createUser = async (user) => {
+
+        const newUser = await store.dispatch('auth/registerUser', user);
+
+        return newUser;
+    }
+    return {
+        createUser
     }
 }

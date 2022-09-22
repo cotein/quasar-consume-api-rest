@@ -2,7 +2,7 @@
         <q-page class="bg-grey-3 window-height window-width row justify-center items-center">
             <div class="signup">
                 <div class="signup-body">
-                    <a class="signup-brand" href="index.html">
+                    <a class="signup-brand" href="#">
                         <img class="img-responsive" src="img/logo.svg" alt="Elephant">
                     </a>
                    <!--  <p class="signup-heading">
@@ -23,9 +23,8 @@
                                             class="form-control" 
                                             type="text" 
                                             v-model="userForm.name"
-                                            spellcheck="false" 
-                                            placeholder="Please enter your first name." 
-                                            required>
+                                            placeholder="Ingrese su nombre." 
+                                            >
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -35,9 +34,8 @@
                                             class="form-control" 
                                             type="text" 
                                             v-model="userForm.lastName"
-                                            spellcheck="false" 
-                                            placeholder="Please enter your last name." 
-                                            required>
+                                            placeholder="Ingrese su apellido." 
+                                            >
                                     </div>
                                 </div>
                             </div>
@@ -49,10 +47,9 @@
                                             class="form-control" 
                                             type="email" 
                                             v-model="userForm.email" 
-                                            spellcheck="false" 
                                             autocomplete="off" 
-                                            placeholder="Please enter your email address." 
-                                            required>
+                                            placeholder="Ingrese su correo electrónico." 
+                                            >
                                     </div>
                                 </div>
                             </div>
@@ -64,10 +61,9 @@
                                             class="form-control" 
                                             type="password" 
                                             v-model="userForm.password" 
-                                            minlength="6" 
-                                            placeholder="Please enter your password." 
-                                            required>
-                                        <small class="help-block">6-character minimum; case sensitive.</small>
+                                            placeholder="Ingrese su contraseña." 
+                                            >
+                                        <!-- <small class="help-block">6-character minimum; case sensitive.</small> -->
                                     </div>
                                 </div>
                             </div>
@@ -79,10 +75,9 @@
                                             class="form-control" 
                                             type="password" 
                                             v-model="userForm.confirmPassword" 
-                                            minlength="6" 
-                                            placeholder="Please enter your password." 
-                                            required>
-                                        <small class="help-block">6-character minimum; case sensitive.</small>
+                                            placeholder="Vuelva a ingresar su contraseña." 
+                                            >
+                                        <!-- <small class="help-block">6-character minimum; case sensitive.</small> -->
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +85,7 @@
                                 <div class="col-xs-12">
                                     <div class="form-group">
                                         <label class="custom-control custom-control-primary custom-checkbox">
-                                            <input id="agree" class="custom-control-input" type="checkbox" name="agree" placeholder="In order to use our services, you must agree to the Terms of Service." required>
+                                            <input id="agree" class="custom-control-input" type="checkbox" name="agree" placeholder="In order to use our services, you must agree to the Terms of Service." >
                                             <span class="custom-control-indicator"></span>
                                             <small class="custom-control-label">I agree to the Elephant <a href="#">Terms of Service</a>.</small>
                                         </label>
@@ -104,12 +99,13 @@
                 <div class="signup-footer">
                     ¿Ya tiene una cuenta? <router-link :to="{name: 'login'}" >LOG IN</router-link>
                 </div>
-                </div>
+            </div>
         </q-page>
 </template>
 
 <script>
 import { defineComponent, ref } from 'vue';
+import { useAuth } from './../../composables/useAuth';
 
 export default defineComponent({
     
@@ -125,11 +121,14 @@ export default defineComponent({
             confirmPassword: ''
         });
         
+        const { createUser } = useAuth();
+
         return {
             userForm,
 
             onSubmit: async () => {
                 console.log("🚀 ~ file: RegisterPage.vue ~ line 134 ~ onSubmit: ~ userForm", userForm.value)
+                createUser(userForm.value);
             }
         }
     }

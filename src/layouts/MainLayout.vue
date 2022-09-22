@@ -93,9 +93,7 @@ export default defineComponent({
     setup () {
        
         const linksList = {...sales, ...purchaser}
-        console.log('linksList')
-        console.log(linksList)
-        console.log('linksList')
+        console.log("🚀 ~ file: MainLayout.vue ~ line 96 ~ setup ~ linksList", linksList)
         const { sideMenuOpen, toogleSideMenu } = useUI();
 
         return {
