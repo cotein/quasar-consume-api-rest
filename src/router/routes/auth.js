@@ -5,12 +5,12 @@ export default {
     children: [
         {
             path: '',
-            name: 'login',
+            name: 'Login',
             component: () => import('../../pages/auth/LoginPage.vue')
         },
         {
             path: '/registro',
-            name: 'register',
+            name: 'Register',
             component: () => import('../../pages/auth/RegisterPage.vue')
         },
         {

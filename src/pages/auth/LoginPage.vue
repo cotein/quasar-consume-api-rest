@@ -8,24 +8,13 @@
                     <h3 class="login-heading">Login</h3>
                     <div class="login-form">
                         <form @submit.prevent="login">
-                            <div class="md-form-group md-label-floating">
-                                <input
-                                    v-model="email"
-                                    class="md-form-control" 
-                                    type="email" 
-                                    name="email" 
-                                    autocomplete="off" 
-                                    >
-                                <label class="md-control-label">Email</label>
+                            <div class="q-gutter-y-md column">
+                                <q-input class="full-width" bottom-slots v-model="email" label="Email" >
+                                </q-input>
                             </div>
-                            <div class="md-form-group md-label-floating">
-                                <input
-                                    v-model="password"
-                                    class="md-form-control" 
-                                    type="password" 
-                                    name="password" 
-                                    >
-                                <label class="md-control-label">Password</label>
+                            <div class="q-gutter-y-md column">
+                                <q-input class="full-width" bottom-slots v-model="password" label="Password" >
+                                </q-input>
                             </div>
                             <div class="md-form-group md-custom-controls">
                                 <!-- <label class="custom-control custom-control-primary custom-checkbox">
@@ -41,7 +30,7 @@
                     </div>
                 </div>
                 <div class="login-footer">
-                    ¿Todavía no tiene una cuenta? <router-link  :to="{name: 'register'}" >Regístrese</router-link>
+                    ¿Todavía no tiene una cuenta? <router-link  :to="{name: 'Register'}" >Regístrese</router-link>
                 </div>
             </div>
         </q-page>

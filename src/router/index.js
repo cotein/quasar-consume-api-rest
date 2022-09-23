@@ -2,7 +2,6 @@ import { route } from 'quasar/wrappers';
 import { SessionStorage } from 'quasar'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
 import routes from './routes'
-import { api } from 'src/boot/axios';
 /*
  * If not building with SSR mode, you can
  * directly export the Router instantiation;
@@ -33,28 +32,20 @@ export default route(function ({ store, ssrContext } ) {
 
         if (path === '/meli/token') {
             const { code } = to.query;
-            console.log("🚀 ~ file: index.js ~ line 37 ~ Router.beforeEach ~ code", code)
-            const APP_ID = '8134297603737971';
-            store.dispatch('auth/meliToken', code);
-
-                /* const CLIENT_SECRET = 'UOkOi9LKA4eGjguSqB074SLjthDRSF2g';
-
-                const REDIRECT_URI = 'https://localhost:9000/meli/token';
-                const pp = await api({ url: '/oauth/token', baseURL: 'https://api.mercadolibre.com', data: {
-                    grant_type: 'code', 
-                    client_id: APP_ID,
-                    client_secret: CLIENT_SECRET,
-                    code : code,
-                    redirect_uri: 'https://localhost:9000/meli/token'  
-                }  */
+            const { data } = store.dispatch('auth/meliToken', code);
         }
 
-        const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+        const user = store.getters['auth/AuthUser'];
 
-        //const user = store.getters['auth/AuthUser'];
-        const user = SessionStorage.getItem('user');
-        if (to.name !== 'Login' && !user && requiresAuth) next({ name: 'Login' })
-        else next();
+        if(to.matched.some(record => record.meta.requiresAuth)){
+            if ( ! user ) {
+                next({ name: 'Login' })
+            } else {
+                next();
+            }
+        } else {
+            next();
+        }
     })
 
     return Router

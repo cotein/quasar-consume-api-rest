@@ -1,5 +1,5 @@
 import authRouter from './routes/auth';
-
+import { useStore } from 'vuex';
 const routes = [
     {
         path: '/',
@@ -13,19 +13,30 @@ const routes = [
         path: '/meli/token',
         name: 'Melitoken',
         component: () => import('./../pages/MeliToken.vue'),
+        meta : {
+            requiresAuth : true
+        },
         params: true
     },
     
     {
-        path: '/system',
+        path: '',
         component: () => import('./../layouts/MainLayout.vue'),
         children: [
+            { 
+                path: 'datos-de-la-empresa', 
+                name: 'CompanyPage',
+                component: () => import('./../pages/CompanyPage.vue'),
+                meta : {
+                    requiresAuth : true
+                }
+            },
             { 
                 path: 'dashboard', 
                 name: 'DashBoard',
                 component: () => import('./../pages/dashboard.vue'),
                 meta : {
-                    requiresAuth : false
+                    requiresAuth : true
                 }
             },
             { 
