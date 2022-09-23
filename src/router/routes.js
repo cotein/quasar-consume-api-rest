@@ -25,7 +25,7 @@ const routes = [
                 name: 'DashBoard',
                 component: () => import('./../pages/dashboard.vue'),
                 meta : {
-                    requiresAuth : true
+                    requiresAuth : false
                 }
             },
             { 

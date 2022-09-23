@@ -7,7 +7,7 @@
                     </a>
                     <h3 class="login-heading">Login</h3>
                     <div class="login-form">
-                        <form @submit.prevent="">
+                        <form @submit.prevent="login">
                             <div class="md-form-group md-label-floating">
                                 <input
                                     v-model="email"
@@ -36,7 +36,7 @@
                                 <span aria-hidden="true"> · </span> -->
                                 <a href="#">¿Olvidó su contraseña?</a>
                             </div>
-                            <button class="btn btn-primary btn-block" type="submit">Ingresar</button>
+                            <q-btn class="full-width" color="primary" label="Ingresar"  type="submit" :loading="loading"/>
                         </form>
                     </div>
                 </div>
@@ -65,6 +65,7 @@ export default defineComponent({
         const password = ref();
         const loading = ref(false);
         
+        
         const login = async () => {
 
             loading.value = true;
@@ -74,11 +75,19 @@ export default defineComponent({
                     email:email.value,
                     password:password.value
                 })
-            .catch(err => console.log(err))
-            .finally(()=>loading.value = false);
+            .catch(err => {
+                console.log("🚀 ~ file: LoginPage.vue ~ line 79 ~ setup ~ err", err)
+            })
+            .finally(()=>{
+                console.log("🚀 ~ file: LoginPage.vue ~ line 83 ~ .finally ~ loading", loading)
+                loading.value = false
+            });
 
             if (data) {
-                console.log(data);
+                console.log("🚀 ~ file: LoginPage.vue ~ line 88 ~ login ~ data", data)
+                store.dispatch('auth/setAuthUser', data.user);
+                store.dispatch('auth/setAuthToken', data.token);
+
                 router.push({name: 'DashBoard'})
             }
         }

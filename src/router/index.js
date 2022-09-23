@@ -32,28 +32,22 @@ export default route(function ({ store, ssrContext } ) {
         const { path } = to;
 
         if (path === '/meli/token') {
-            
             const { code } = to.query;
+            console.log("🚀 ~ file: index.js ~ line 37 ~ Router.beforeEach ~ code", code)
             const APP_ID = '8134297603737971';
+            store.dispatch('auth/meliToken', code);
 
-                const CLIENT_SECRET = 'UOkOi9LKA4eGjguSqB074SLjthDRSF2g';
+                /* const CLIENT_SECRET = 'UOkOi9LKA4eGjguSqB074SLjthDRSF2g';
 
                 const REDIRECT_URI = 'https://localhost:9000/meli/token';
-            const pp = await api({ url: '/oauth/token', baseURL: 'https://api.mercadolibre.com', data: {
+                const pp = await api({ url: '/oauth/token', baseURL: 'https://api.mercadolibre.com', data: {
                     grant_type: 'code', 
                     client_id: APP_ID,
                     client_secret: CLIENT_SECRET,
                     code : code,
                     redirect_uri: 'https://localhost:9000/meli/token'  
-                } 
-            });
-            console.log("🚀 ~ file: index.js ~ line 50 ~ Router.beforeEach ~ pp", pp)
-
-            
-
-
+                }  */
         }
-    console.log("🚀 ~ file: index.js ~ line 30 ~ Router.beforeEach ~ code", path)
 
         const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 

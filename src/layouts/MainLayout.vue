@@ -55,11 +55,11 @@
           Navegación
         </q-item-label>
 
-        <EssentialLink
+        <!-- <EssentialLink
           v-for="link in linksList"
           :key="link.title"
           v-bind="link"
-        />
+        /> -->
       </q-list>
     </q-drawer>
 
@@ -77,8 +77,9 @@
 import { defineComponent } from 'vue';
 import EssentialLink from 'components/EssentialLink.vue'
 //import {linksList} from './../router/link-list';
-import {sales} from './../router/routes/sales';
-import {purchaser} from './../router/routes/purchaser';
+import {sales} from './../router/nav-routes/sales';
+
+import {purchaser} from './../router/nav-routes/purchaser';
 
 import { useUI } from './../composables/useUI';
 

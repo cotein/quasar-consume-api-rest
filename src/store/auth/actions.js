@@ -23,9 +23,23 @@ export const registerUser = async (_, userForm) => {
         return data;
 
     } catch (error) {
+        console.log("🚀 ~ file: actions.js ~ line 29 ~ register ~ error", error)
         throw error;
         
-        console.log("🚀 ~ file: actions.js ~ line 29 ~ register ~ error", error)
+    }
+}
+
+export const meliToken = async (_, code) => {
+
+    try {
+        const { data } = await api.post('/api/meli', {code});
+
+        return data;
+
+    } catch (error) {
+        console.log("🚀 ~ file: actions.js ~ line 42 ~ register ~ error", error)
+        throw error;
+        
     }
 }
 
