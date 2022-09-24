@@ -98,7 +98,7 @@
                 </div>
                 <div class="signup-footer">
                     <q-btn color="primary" icon="check" label="OK" @click="onClick" />
-                    ¿Ya tiene una cuenta? <router-link :to="{name: 'login'}" >LOG IN</router-link>
+                    ¿Ya tiene una cuenta? <router-link :to="{name: 'Login'}" >LOG IN</router-link>
                 </div>
             </div>
         </q-page>

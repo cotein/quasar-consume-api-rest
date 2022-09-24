@@ -26,11 +26,11 @@
                             <li><a href="#">Contact</a></li>
                             <li>
                                     
-                                <router-link  to="/login" >LOG IN</router-link>
+                                <router-link  to="/auth" >LOG IN</router-link>
                             </li>
                             <li>
                                 <div class="navbar-btn-group">
-                                    <a class="navbar-btn btn btn-primary btn-block" href="signup-1.html">Sign up</a>
+                                    <router-link class="navbar-btn btn btn-primary btn-block" to="/registro" >Registrarse</router-link>
                                 </div>
                             </li>
                         </ul>

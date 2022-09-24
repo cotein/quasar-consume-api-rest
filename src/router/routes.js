@@ -2,7 +2,7 @@ import authRouter from './routes/auth';
 import { useStore } from 'vuex';
 const routes = [
     {
-        path: '/',
+        path: '/home',
         component: () => import('./../layouts/LandingPage.vue')
     },
     {

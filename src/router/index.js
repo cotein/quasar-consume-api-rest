@@ -30,20 +30,28 @@ export default route(function ({ store, ssrContext } ) {
         
         const { path } = to;
 
-        if (path === '/meli/token') {
-            const { code } = to.query;
-            const { data } = store.dispatch('auth/meliToken', code);
-        }
-
         const user = store.getters['auth/AuthUser'];
 
         if(to.matched.some(record => record.meta.requiresAuth)){
             if ( ! user ) {
                 next({ name: 'Login' })
             } else {
-                next();
-            }
+                if (path === '/dashboard') {
+                    if (! user.company) {
+                        next({name: 'CompanyPage'});
+                    }else{
+                        next();
+                    }
+                }else if (path === '/meli/token'){
+                    const { code } = to.query;
+                    const { data } = store.dispatch('auth/meliToken', code);
+                }
+                else{
+                    next();
+                }
+            } 
         } else {
+            console.log("🚀 ~ file: index.js ~ line 56 ~ Router.beforeEach ~ else", 'else')
             next();
         }
     })
