@@ -32,6 +32,10 @@ export default route(function ({ store, ssrContext } ) {
 
         const user = store.getters['auth/AuthUser'];
 
+        if (path === '/meli/token'){
+            const { code } = to.query;
+            const { data } = store.dispatch('auth/meliToken', code);
+        }
         if(to.matched.some(record => record.meta.requiresAuth)){
             if ( ! user ) {
                 next({ name: 'Login' })
@@ -42,10 +46,10 @@ export default route(function ({ store, ssrContext } ) {
                     }else{
                         next();
                     }
-                }else if (path === '/meli/token'){
+                }/* else if (path === '/meli/token'){
                     const { code } = to.query;
                     const { data } = store.dispatch('auth/meliToken', code);
-                }
+                } */
                 else{
                     next();
                 }

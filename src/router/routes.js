@@ -14,7 +14,7 @@ const routes = [
         name: 'Melitoken',
         component: () => import('./../pages/MeliToken.vue'),
         meta : {
-            requiresAuth : true
+            requiresAuth : false
         },
         params: true
     },
